@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function NotFound(){return <div className="mx-auto w-[calc(100%-48px)] max-w-[1120px] max-[600px]:w-[calc(100%-36px)] not-found"><div className="eyebrow" style={{justifyContent:"center"}}>404 / Not found</div><h1>This page wandered off.</h1><p>The link may be out of date, or the page may have moved.</p><Link className="button button-dark" href="/">Back to Rynster</Link></div>}

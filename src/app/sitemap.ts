@@ -1,0 +1,2 @@
+import type { MetadataRoute } from "next";
+export default function sitemap():MetadataRoute.Sitemap{const routes=["","features","docs","docs/installation","docs/quickstart","docs/ai-client-setup","docs/security","docs/troubleshooting","media","contact","security","privacy"];return routes.map(route=>({url:`https://rynster.vercel.app/${route}`,lastModified:new Date(),changeFrequency:route===""?"weekly":"monthly",priority:route===""?1:0.7}))}
