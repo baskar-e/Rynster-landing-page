@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MobileNavigation from "@/components/mobile-navigation";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -28,5 +29,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <div className="footer-brand"><Link className="brand" href="/"><span className="brand-mark">r<span>.</span></span><span>rynster</span></Link><p>Your AI, your local projects.<br />A little more control over what happens next.</p></div>
       <div className="footer-links"><div><b>Explore</b><Link href="/features">Features</Link><Link href="/media">Media</Link><Link href="/docs">Documentation</Link></div><div><b>Project</b><Link href="/security">Security</Link><Link href="/privacy">Privacy</Link><Link href="/contact">Contact</Link></div></div>
     </div><div className="mx-auto w-[calc(100%-48px)] max-w-[1120px] max-[600px]:w-[calc(100%-36px)] footer-bottom"><span>© {new Date().getFullYear()} Rynster</span><span>Built for the work that matters.</span></div></footer>
+    <Analytics />
   </body></html>;
 }

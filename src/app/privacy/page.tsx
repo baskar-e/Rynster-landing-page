@@ -16,12 +16,12 @@ export default function Privacy() {
       </section>
 
       <section><h2>2. The public website</h2>
-        <p>The website does not require an account to browse and does not include an analytics or advertising integration. The hosting provider may process technical request information, such as IP address, browser details, and security logs, to deliver and protect the site. The provider’s own policies and settings govern its processing and retention.</p>
-        <p>The contact endpoint uses the request IP address for a best-effort, in-memory rate limit. The site does not write that rate-limit data to a visitor database. Hosting logs may be subject to separate retention.</p>
+        <p>The website does not require an account to browse. We use Vercel Web Analytics to measure page views and visitors in the project dashboard; it uses a daily rotating visitor hash, does not use cookies for analytics, and does not track visitors across sites. The hosting provider may also process technical request information, such as IP address, browser details, and security logs, to deliver and protect the site. The provider’s own policies and settings govern its processing and retention.</p>
+        <p>The home page heart reaction uses a first-party cookie containing a random browser identifier for up to one year. The site stores a one-way hash of that identifier in Upstash Redis to prevent repeat reactions from the same browser; only the aggregate reaction count is shown publicly. Clearing browser storage can allow another reaction. The contact endpoint uses a best-effort in-memory rate limit; the home page feedback endpoint uses a short-lived rate-limit key derived from a one-way HMAC of the request IP address. Hosting logs may be subject to separate retention.</p>
       </section>
 
       <section><h2>3. Contact messages</h2>
-        <p>If contact delivery is configured, the form fields you submit—name if supplied, email address, subject, and message—are sent server-side through Resend to the project contact. Your email address is used as the reply-to address. Resend and the receiving email system may process or retain the message under their own terms and retention practices. This website does not keep a contact-message database.</p>
+        <p>If contact delivery is configured, the contact form fields you submit—name if supplied, email address, subject, and message—are sent server-side through Resend to the project contact. Your email address is used as the reply-to address. The optional reply email and message submitted through the home page feedback form are also sent to the project contact through Resend. This website does not keep a contact-message database. Resend and the receiving email system may process or retain messages under their own terms and retention practices.</p>
         <p>Do not include passwords, access tokens, private keys, or private project files in a message. For a vulnerability report, follow the private instructions on the <Link href="/security">security page</Link>.</p>
       </section>
 
