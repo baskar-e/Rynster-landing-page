@@ -2,6 +2,15 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/media",
+        destination: "/how-it-works",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     const production = process.env.NODE_ENV === "production";
     const csp = [

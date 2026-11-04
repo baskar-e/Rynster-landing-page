@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   },
 };
 
-const nav = [ ["Features", "/features"], ["Docs", "/docs"], ["Media", "/media"], ["Security", "/security"] ];
+const nav = [ ["Features", "/features"], ["Docs", "/docs"], ["How It Works", "/how-it-works"], ["Security", "/security"] ];
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><body className="min-h-screen flex flex-col font-sans">
@@ -63,8 +63,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <span>rynster</span>
       </Link>
       <nav className="main-nav" aria-label="Main navigation">{nav.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</nav>
+      <Link className="button button-small button-dark header-cta !py-1.5" href="/docs/installation">Get started</Link>
       <MobileNavigation />
-      <Link className="button button-small button-dark header-cta" href="/docs/installation">Get started</Link>
     </div></header>
     <main className="flex-1">{children}</main>
     <footer className="site-footer"><div className="mx-auto w-[calc(100%-48px)] max-w-[1120px] max-[600px]:w-[calc(100%-36px)] footer-top">
@@ -81,7 +81,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         </Link>
         <p>Your AI, your local projects.<br />A little more control over what happens next.</p>
       </div>
-      <div className="footer-links"><div><b>Explore</b><Link href="/features">Features</Link><Link href="/media">Media</Link><Link href="/docs">Documentation</Link></div><div><b>Project</b><Link href="/security">Security</Link><Link href="/privacy">Privacy</Link><Link href="/contact">Contact</Link></div></div>
+      <div className="footer-links"><div><b>Explore</b><Link href="/features">Features</Link><Link href="/how-it-works">How It Works</Link><Link href="/docs">Documentation</Link></div><div><b>Project</b><Link href="/security">Security</Link><Link href="/privacy">Privacy</Link><Link href="/contact">Contact</Link></div></div>
     </div><div className="mx-auto w-[calc(100%-48px)] max-w-[1120px] max-[600px]:w-[calc(100%-36px)] footer-bottom"><span>© {new Date().getFullYear()} Rynster</span><span>Built for the work that matters.</span></div></footer>
     <Analytics />
   </body></html>;
