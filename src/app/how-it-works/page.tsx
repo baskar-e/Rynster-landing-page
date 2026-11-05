@@ -1,9 +1,11 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { GuideSteps } from "@/components/guide-steps";
 
 export const metadata = {
-  title: "How It Works",
-  description: "Visual guides, diagrams, and walkthroughs of how Rynster connects to your local project and AI client.",
+  title: "How Rynster works: step-by-step setup",
+  description:
+    "Connect Claude to your local project with Rynster in 13 steps: register, tunnel, connect, approve.",
 };
 
 function Diagram({ type }: { type: "flow" | "review" | "local" }) {
@@ -62,31 +64,83 @@ export default function HowItWorks() {
           <div className="eyebrow">Rynster / How It Works</div>
           <h1>See the shape<br />of the workflow.</h1>
           <p>
-            Visual guides, workflow diagrams, and walkthroughs showing how your local project,
-            Rynster, and your AI client work together seamlessly.
+            Visual guides, video walkthrough, and step-by-step instructions showing how your local project,
+            Rynster, and your AI client work together seamlessly and safely.
           </p>
         </div>
       </div>
-      <div className="mx-auto w-[calc(100%-48px)] max-w-[1120px] max-[600px]:w-[calc(100%-36px)] page-section">
-        <div className="media-grid">
-          {cards.map(([title, description, type]) => (
-            <article className="media-card" key={title}>
-              <div className={`media-art ${type === "review" ? "dark" : ""}`}>
-                <Diagram type={type} />
-              </div>
-              <div className="media-caption">
-                <b>{title}</b>
-                <p>{description}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+
+      <div className="mx-auto w-[calc(100%-48px)] max-w-[1120px] max-[600px]:w-[calc(100%-36px)] page-section space-y-16">
+        {/* Local Architecture Overview */}
+        <section aria-labelledby="architecture-heading">
+          <div className="section-kicker">Architecture</div>
+          <h2 id="architecture-heading">Local MCP Architecture</h2>
+          <div className="media-grid mt-6">
+            {cards.map(([title, description, type]) => (
+              <article className="media-card" key={title}>
+                <div className={`media-art ${type === "review" ? "dark" : ""}`}>
+                  <Diagram type={type} />
+                </div>
+                <div className="media-caption">
+                  <b>{title}</b>
+                  <p>{description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        {/* Video Walkthrough Section */}
+        <section aria-labelledby="video-heading" className="pt-4">
+          <div className="section-kicker">Video Walkthrough</div>
+          <h2 id="video-heading">Watch the 3-minute walkthrough</h2>
+          <p className="mt-2 text-[#66746c] text-[15px]">
+            Watch how to register a project, start a secure tunnel, link Claude as a custom connector, and approve file edits.
+          </p>
+          <div className="mt-6 overflow-hidden rounded-xl border border-[var(--line,#dce4d9)] bg-[#14251f] shadow-lg max-w-[960px]">
+            <video
+              controls
+              playsInline
+              preload="metadata"
+              poster="/guide/poster.webp"
+              className="aspect-video w-full"
+            >
+              <source src="/videos/rynster-setup-guide.mp4" type="video/mp4" />
+              <source src="/guide/rynster-setup-guide.mp4" type="video/mp4" />
+              Your browser does not support playing this video. The full steps with screenshots are documented below.
+            </video>
+          </div>
+        </section>
+
+        {/* Step-by-Step Screenshots Section */}
+        <section aria-labelledby="steps-heading" className="pt-6">
+          <div className="section-kicker">Step-by-Step Guide</div>
+          <h2 id="steps-heading">Prefer to read? Follow the 13 steps</h2>
+          <p className="mt-2 text-[#66746c] text-[15px] max-w-[680px]">
+            Follow every step from initial registration and Cloudflare tunnel setup to authorizing Claude and approving code changes locally.
+          </p>
+          <div className="mt-8">
+            <GuideSteps />
+          </div>
+        </section>
+
+        {/* Safety Callout */}
         <div className="callout">
           Planning a public screenshot or video demo? Remove credentials, private project data, and unreleased details before publishing.
         </div>
-        <p>
-          Questions about this workflow or integration? <Link href="/contact">Get in touch <ArrowRight size={14} aria-hidden="true" /></Link>
-        </p>
+
+        {/* Footer Navigation */}
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-[var(--line,#dce4d9)]">
+          <p className="text-sm text-[#66746c]">
+            Stuck? Check our <Link href="/docs/troubleshooting" className="text-[#315535] underline font-medium">troubleshooting guide</Link> or <Link href="/docs/quickstart" className="text-[#315535] underline font-medium">quick start docs</Link>.
+          </p>
+          <p className="text-sm">
+            Questions about this workflow?{" "}
+            <Link href="/contact" className="inline-flex items-center gap-1 font-semibold text-[#18372b] hover:text-[#447b37]">
+              Get in touch <ArrowRight size={14} aria-hidden="true" />
+            </Link>
+          </p>
+        </div>
       </div>
     </>
   );
